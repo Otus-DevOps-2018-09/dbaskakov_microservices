@@ -1,2 +1,7 @@
-[docker]
-35.233.42.158
+#!/bin/sh
+
+cd ../terraform
+terraform state pull > /tmp/docker.tfstate
+cd ../ansible
+terraform-inventory -list /tmp/docker.tfstate
+rm -rf /tmp/docker.tfstate
