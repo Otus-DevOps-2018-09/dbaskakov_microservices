@@ -1,8 +1,0 @@
-.vscode
-
-*.tfstate
-*.tfstate.*.backup
-*.tfstate.backup
-*.tfvars
-.terraform/
-infra/packer/variables.json
