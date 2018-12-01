@@ -1,6 +1,19 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
+# HW-14 docker-3
+docker network create reddit
+docker run -d --network=reddit --network-alias=post_db --network-alias=comment_db mongo:latest
+docker run -d --network=reddit --network-alias=post_db --network-alias=comment_db -v reddit_db:/data/db mongo:latest
+docker run -d --network=reddit --network-alias=post impel1o/post:1.0
+docker run -d --network=reddit --network-alias=comment impel1o/comment:2.0
+docker run -d --network=reddit -p 9292:9292 impel1o/ui:2.0
+
+docker kill $(docker ps -q)
+
+
+docker volume create reddit_db
+
 # HW-13 docker-2
 
 • docker logs reddit -f
