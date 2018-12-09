@@ -8,3 +8,4 @@
 infra/packer/variables.json
 *.tfvars
 variables.json
+.env
