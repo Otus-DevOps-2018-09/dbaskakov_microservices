@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd ../terraform
-terraform state pull > /tmp/docker.tfstate
-cd ../ansible
-terraform-inventory -list /tmp/docker.tfstate
-rm -rf /tmp/docker.tfstate
