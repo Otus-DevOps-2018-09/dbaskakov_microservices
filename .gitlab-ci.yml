@@ -6,9 +6,12 @@ stages:
 variables:
     DATABASE_URL: 'mongodb://mongo/user_posts'
 
+<<<<<<< HEAD
 before_script:
   - cd reddit
   - bundle install
+=======
+>>>>>>> 798ce544336b7c3833ca5945212c2d60a22de3b3
 
 build_job:
   stage: build
@@ -17,6 +20,7 @@ build_job:
   tags:
     - docker
 
+<<<<<<< HEAD
 test_unit_job:
  stage: test
  services:
@@ -25,6 +29,20 @@ test_unit_job:
  - ruby simpletest.rb
  tags:
     - docker
+=======
+    
+test_unit_job:
+ stage: test
+ before_script:
+ - cd reddit
+ - bundle install
+ services:
+ - mongo:latest
+ script:
+ - ruby simpletest.rb 
+ tags:
+    - docker  
+>>>>>>> 798ce544336b7c3833ca5945212c2d60a22de3b3
 
 test_integration_job:
   stage: test
