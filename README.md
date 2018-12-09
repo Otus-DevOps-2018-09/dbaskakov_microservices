@@ -3,7 +3,4 @@ dbaskakov microservices repository
 
 # HW-16 gitlabci-1
 
-1. gitlabci
-> git checkout -b gitlab-ci-1
-> git remote add gitlab http://<your-vm-ip>/homework/example.git
-> git push gitlab gitlab-ci-1
+1. нотификашки с гитлаба приходят сюда --> #dmitry_baskakov
