@@ -43,3 +43,5 @@ deploy_dev_job:
    environment:
      name: dev
      url: http://dev.example.com
+   tags:
+    - docker  
