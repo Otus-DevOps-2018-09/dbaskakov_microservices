@@ -1,0 +1,13 @@
+---
+- hosts: docker-res
+  become: true
+
+  tasks:
+
+  - name: Create a data container
+    docker_container:
+          name: reddit
+          image: impel1o/otus-reddit:1.0
+          auto_remove: yes
+          ports:
+             - "9292:9292"
