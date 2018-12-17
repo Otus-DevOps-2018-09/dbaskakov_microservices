@@ -5,25 +5,31 @@ services:
     volumes:
       - post_db:/data/db
     networks:
-      - back_net
+      back_net:
+
   ui:
     image: ${USERNAME}/ui:${VERSION_UI}
     ports:
       - 9292:${UI_PORT}/tcp
     networks:
-      - front_net
+       - front_net
+       - mon
   post:
     image: ${USERNAME}/post:${VERSION_POST}
     networks:
       - back_net
       - front_net
+      - mon
+
   comment:
     image: ${USERNAME}/comment:${VERSION_COMMENT}
     networks:
       - back_net
       - front_net
+      - mon
+
   prometheus:
-    image: ${USERNAME}/prometheus
+    image: ${USERNAME}/prometheus:${VERSION_PROM}
     ports:
       - '9090:9090'
     volumes:
@@ -33,7 +39,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d'
     networks:
-      - back_net
+      - mon
 
 volumes:
   post_db:
@@ -42,3 +48,4 @@ volumes:
 networks:
   back_net:
   front_net:
+  mon:
