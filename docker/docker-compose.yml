@@ -64,6 +64,8 @@ services:
 
   cloudprober:
     image: ${USERNAME}/cloudprober
+    ports:
+      - 9313:9313
     networks:
        - front_net
        - back_net
