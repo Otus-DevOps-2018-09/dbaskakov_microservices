@@ -41,6 +41,34 @@ services:
     networks:
       - mon
 
+  node-exporter:
+    image: prom/node-exporter:v0.15.2
+    user: root
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+    networks:
+      - mon
+
+  mongo-exporter:
+    image: ${USERNAME}/mongo_exporter
+    environment:
+      - MONGODB_URL=mongodb://post_db
+    networks:
+      - mon
+
+  cloudprober:
+    image: ${USERNAME}/cloudprober
+    networks:
+       - front_net
+       - back_net
+       - mon
+
 volumes:
   post_db:
   prometheus_data:

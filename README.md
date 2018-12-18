@@ -9,6 +9,8 @@ git commit и git push gitlab2 gitlab-ci-2
 
 ## HW-18 promoetheus
 
+https://cloud.docker.com/u/impel1o/repository/list
+
 docker-machine create --driver google \
  --google-machine-image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts \
  --google-machine-type n1-standard-1 \
