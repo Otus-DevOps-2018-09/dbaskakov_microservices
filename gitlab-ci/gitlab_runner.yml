@@ -1,0 +1,21 @@
+- name: register new runner
+  hosts: "{{ runners }}"
+  become: yes
+
+  tasks:
+
+  - name: register gitlab-runner
+    shell: |
+      gitlab-runner register \
+      --non-interactive \
+      --url "{{ gitlab_url }}" \
+      --registration-token "{{ project_token }}" \
+      --executor "docker" \
+      --docker-image alpine:3 \
+      --description "docker-runner-test" \
+      --tag-list "docker" \
+      --locked="false" \
+    register: runner
+    failed_when:
+     - "'register successfully' not in runner.stderr"
+     - "runner.rc == 0"
