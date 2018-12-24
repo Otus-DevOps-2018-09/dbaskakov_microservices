@@ -1,8 +1,21 @@
-image: ruby:2.4.2 
+image: ruby:2.4.2
 stages:
   - build
   - test
-  - deploy
+  - review
+  - stage
+  - production
+
+branch review:
+ stage: review
+ script: echo "Deploy to $CI_ENVIRONMENT_SLUG"
+ environment:
+  name: branch/$CI_COMMIT_REF_NAME
+  url: http://$CI_ENVIRONMENT_SLUG.example.com
+ only:
+ - branches
+ except:
+ - master
 
 variables:
     DATABASE_URL: 'mongodb://mongo/user_posts'
@@ -36,9 +49,39 @@ test_integration_job:
   tags:
     - docker
 
-deploy_job:
-  stage: deploy
-  script:
+deploy_dev_job:
+   stage: review
+   script:
     - echo 'Deploy'
-  tags:
+   environment:
+     name: dev
+     url: http://dev.example.com
+   tags:
     - docker
+
+staging:
+   stage: stage
+   when: manual
+   only:
+    - /^\d+\.\d+\.\d+/
+   script:
+    - echo 'Deploy'
+   environment:
+     name: stage
+     url: https://beta.example.com
+   tags:
+    - docker
+
+production:
+ stage: production
+ when: manual
+ only:
+  - /^\d+\.\d+\.\d+/
+ script:
+ - echo 'Deploy'
+ environment:
+   name: production
+   url: https://example.com
+ tags:
+    - docker
+
