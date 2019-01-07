@@ -7,6 +7,10 @@ docker-compose f docker-compose-monitoring.yml up -d
 
 https://cloud.docker.com/u/impel1o/repository/list
 
+- add in makefile alertmanager
+- add docker exp & dashboard
+- add email notification
+
 ## HW-18 promoetheus
 
 https://cloud.docker.com/u/impel1o/repository/list

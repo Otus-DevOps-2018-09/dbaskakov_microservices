@@ -1,4 +1,4 @@
-build: comment post ui cloudprober prometheus
+build: comment post ui cloudprober prometheus alertmanager
 push: push_comment push_post push_ui push_cloudprober push_prometheus push_alertmanager
 
 alertmanager:
