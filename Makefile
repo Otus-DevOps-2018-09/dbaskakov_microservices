@@ -1,5 +1,5 @@
 build: comment post ui cloudprober prometheus
-push: push_comment push_post push_ui push_cloudprober push_prometheus
+push: push_comment push_post push_ui push_cloudprober push_prometheus push_alertmanager
 
 alertmanager:
 	cd monitoring/alertmanager && docker build -t ${USER_NAME}/alertmanager .
