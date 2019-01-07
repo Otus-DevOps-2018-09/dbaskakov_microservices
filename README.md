@@ -5,6 +5,8 @@ dbaskakov microservices repository
 
 docker-compose f docker-compose-monitoring.yml up -d
 
+https://cloud.docker.com/u/impel1o/repository/list
+
 ## HW-18 promoetheus
 
 https://cloud.docker.com/u/impel1o/repository/list
