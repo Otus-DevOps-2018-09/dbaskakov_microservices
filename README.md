@@ -14,6 +14,10 @@ dbaskakov microservices repository
 
   sudo sysctl -w vm.max_map_count=262144
 
+  Поднят стэк EFK + zipkin ( docker-compose-logging.yml )
+  Добавлен грок шаблон в конфиг fluentd  для полного парсинга ui service
+
+
 ## HW-19 prometheus-2
 
 docker-compose f docker-compose-monitoring.yml up -d
