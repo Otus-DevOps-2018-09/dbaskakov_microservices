@@ -1,5 +1,11 @@
-build: comment post ui cloudprober prometheus alertmanager
+build: comment post ui cloudprober prometheus alertmanager fluentd
 push: push_comment push_post push_ui push_cloudprober push_prometheus push_alertmanager
+
+push_fluentd:
+	docker push ${USER_NAME}/fluentd
+
+fluentd:
+	cd logging/fluentd && docker build -t ${USER_NAME}/fluentd .
 
 alertmanager:
 	cd monitoring/alertmanager && docker build -t ${USER_NAME}/alertmanager .
