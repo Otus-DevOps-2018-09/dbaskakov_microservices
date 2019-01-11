@@ -16,6 +16,7 @@ dbaskakov microservices repository
 
   Поднят стэк EFK + zipkin ( docker-compose-logging.yml )
   Добавлен грок шаблон в конфиг fluentd  для полного парсинга ui service
+  
 
 
 ## HW-19 prometheus-2
