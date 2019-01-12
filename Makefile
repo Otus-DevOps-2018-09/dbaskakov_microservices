@@ -1,5 +1,17 @@
-build: comment post ui cloudprober prometheus alertmanager
+build: comment post ui cloudprober prometheus alertmanager fluentd
 push: push_comment push_post push_ui push_cloudprober push_prometheus push_alertmanager
+
+logging_down:
+	cd docker && docker-compose -f docker-compose-logging.yml down
+	
+logging_up:
+	cd docker && docker-compose -f docker-compose-logging.yml up -d
+
+push_fluentd:
+	docker push ${USER_NAME}/fluentd
+
+fluentd:
+	cd logging/fluentd && docker build -t ${USER_NAME}/fluentd .
 
 alertmanager:
 	cd monitoring/alertmanager && docker build -t ${USER_NAME}/alertmanager .

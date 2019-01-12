@@ -1,7 +1,25 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
-## HW-19 promoetheus-2
+## HW-20 logging-1
+
+ docker-machine create --driver google --google-machine-image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts \
+ --google-machine-type n1-standard-1 \
+ --google-open-port 5601/tcp \
+ --google-open-port 9292/tcp \
+ --google-open-port 9411/tcp \
+ logging 
+
+  docker-compose logs -f post 
+
+  sudo sysctl -w vm.max_map_count=262144
+
+  Поднят стэк EFK + zipkin ( docker-compose-logging.yml )
+  Добавлен грок шаблон в конфиг fluentd  для полного парсинга ui service
+  
+
+
+## HW-19 prometheus-2
 
 docker-compose f docker-compose-monitoring.yml up -d
 

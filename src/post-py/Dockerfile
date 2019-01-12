@@ -1,4 +1,8 @@
 FROM python:3.6.0-alpine
+RUN apk update && \
+    apk upgrade && \
+    apk add gcc musl-dev
+
 
 WORKDIR /app
 ADD . /app
