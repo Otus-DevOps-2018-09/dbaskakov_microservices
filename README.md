@@ -1,11 +1,15 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
-## HW-17 gitlabci-2
+## HW-19 promoetheus-2
 
-git remote add gitlab2 http://35.246.175.49/homework/example2.git
-git push gitlab2 gitlab-ci-2
-git commit и git push gitlab2 gitlab-ci-2
+docker-compose f docker-compose-monitoring.yml up -d
+
+https://cloud.docker.com/u/impel1o/repository/list
+
+- add in makefile alertmanager
+- add docker exp & dashboard
+- add email notification
 
 ## HW-18 promoetheus
 
@@ -18,6 +22,12 @@ docker-machine create --driver google \
  docker-host 
 
  docker run --rm -p 9090:9090 -d --name prometheus prom/prometheus:v2.1.0 
+
+ ## HW-17 gitlabci-2
+
+git remote add gitlab2 http://35.246.175.49/homework/example2.git
+git push gitlab2 gitlab-ci-2
+git commit и git push gitlab2 gitlab-ci-2
 
 ## HW-16 gitlabci-1
 
