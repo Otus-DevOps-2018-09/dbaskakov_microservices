@@ -1,6 +1,12 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
+## HW-21 k8s - 1
+
+Пройден THF for k8s
+
+добавлен плэйбук автоматизации Bootstraping etcd cluster
+
 ## HW-20 logging-1
 
  docker-machine create --driver google --google-machine-image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts \

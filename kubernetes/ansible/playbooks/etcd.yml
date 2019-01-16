@@ -1,0 +1,59 @@
+---
+- name: Bootstraping etcd cluster
+  hosts: controllers
+  become: yes
+
+  tasks:
+
+  - name: Download etcd
+    get_url:
+      url: https://github.com/coreos/etcd/releases/download/v3.3.9/etcd-v3.3.9-linux-amd64.tar.gz
+      dest: /tmp/etcd-v3.3.9-linux-amd64.tar.gz
+
+  - file:
+      path: /tmp/etcd-v3.3.9-linux-amd64
+      state: directory
+
+  - name: Extract etcd archive
+    unarchive:
+      src: /tmpr/etcd-v3.3.9-linux-amd64.tar.gz
+      dest: /tmp
+      remote_src: yes
+
+  - name: mv
+    shell: sudo mv /home/gitlab-runner/etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/
+
+
+  - file:
+      path: /etc/etcd
+      state: directory
+
+  - file:
+      path: /var/lib/etcd
+      state: directory
+
+  - copy:
+      src: /tmp/controllers_keys/ca.pem
+      dst: /etc/etcd/ca.pem
+      remote_src: yes
+
+  - copy:
+      src: /tmp/controllers_keys/kubernetes-key.pem
+      dst: /etc/etcd/kubernetes-key.pem
+      remote_src: yes
+
+  - copy:
+      src: /tmp/controllers_keys/kubernetes.pem
+      dst: /etc/etcd/kubernetes.pem
+      remote_src: yes
+
+  - name: copy etcd.service
+    template:
+       src: ../files/etcd.service.j2
+       dest: /etc/systemd/system/etcd.service
+
+  - service:
+       name: etcd
+       state: started
+       enabled: yes
+       daemon_reload: yes
