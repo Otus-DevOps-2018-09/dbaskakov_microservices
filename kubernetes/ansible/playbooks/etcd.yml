@@ -21,7 +21,7 @@
       remote_src: yes
 
   - name: mv
-    shell: sudo mv /home/gitlab-runner/etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/
+    shell: sudo mv /tmp/etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/
 
 
   - file:
