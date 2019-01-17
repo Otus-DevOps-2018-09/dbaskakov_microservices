@@ -16,7 +16,7 @@
 
   - name: Extract etcd archive
     unarchive:
-      src: /tmpr/etcd-v3.3.9-linux-amd64.tar.gz
+      src: /tmp/etcd-v3.3.9-linux-amd64.tar.gz
       dest: /tmp
       remote_src: yes
 
