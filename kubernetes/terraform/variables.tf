@@ -1,6 +1,6 @@
 variable project {
   description = "Project ID"
-  default = "gitlab-xxx"
+  default = "gitlab-225009"
 }
 
 variable region {
@@ -30,5 +30,5 @@ variable initial_node_count {
 
 variable gke_version {
   description = "GKE Version"
-  default     = "1.10.9-gke.5"
+  default     = "1.10.11-gke.1"
 }
