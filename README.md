@@ -1,6 +1,14 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
+## HW-23 k8s - 3
+
+gcloud beta container clusters update cluster --zone=europe-west1-c --update-addons=NetworkPolicy=ENABLED
+
+gcloud beta container clusters update cluster --zone=europe-west1-c  --enable-network-policy
+
+gcloud compute disks create --size=25GB --zone=europe-west1-c reddit-mongo-disk
+
 ## HW-22 k8s - 2
 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=dev
