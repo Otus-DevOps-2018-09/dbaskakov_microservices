@@ -1,0 +1,20 @@
+comment:
+  image:
+    repository: impel1o/comment
+    tag: latest
+  service:
+    externalPort: 9292
+
+post:
+  image:
+    repository: impel1o/post
+    tag: latest
+    service:
+      externalPort: 5000
+
+ui:
+  image:
+    repository: impel1o/ui
+    tag: latest
+    service:
+      externalPort: 9292
