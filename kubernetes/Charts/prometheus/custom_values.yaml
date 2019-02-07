@@ -743,19 +743,19 @@ serverFiles:
           - source_labels: [__meta_kubernetes_service_name]
             target_label: kubernetes_name
 
-      - job_name: 'reddit-endpoints'
-        kubernetes_sd_configs:
-          - role: endpoints
-        relabel_configs:
-          - action: labelmap
-            regex: __meta_kubernetes_service_label_(.+)
-          - source_labels: [__meta_kubernetes_service_label_app]
-            action: keep
-            regex: reddit
-          - source_labels: [__meta_kubernetes_namespace]
-            target_label: kubernetes_namespace
-          - source_labels: [__meta_kubernetes_name]
-            target_label: kubernetes_name
+      # - job_name: 'reddit-endpoints'
+      #   kubernetes_sd_configs:
+      #     - role: endpoints
+      #   relabel_configs:
+      #     - action: labelmap
+      #       regex: __meta_kubernetes_service_label_(.+)
+      #     - source_labels: [__meta_kubernetes_service_label_app]
+      #       action: keep
+      #       regex: reddit
+      #     - source_labels: [__meta_kubernetes_namespace]
+      #       target_label: kubernetes_namespace
+      #     - source_labels: [__meta_kubernetes_name]
+      #       target_label: kubernetes_name
 
       - job_name: 'reddit-ui'
         kubernetes_sd_configs:
@@ -765,7 +765,7 @@ serverFiles:
             regex: __meta_kubernetes_service_label_(.+)
           - source_labels: [__meta_kubernetes_service_label_app]
             action: keep
-            regex: reddit;ui
+            regex: reddit;(.*-ui)+
           - source_labels: [__meta_kubernetes_namespace]
             target_label: kubernetes_namespace
           - source_labels: [__meta_kubernetes_name]
