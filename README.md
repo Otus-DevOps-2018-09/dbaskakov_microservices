@@ -3,6 +3,12 @@ dbaskakov microservices repository
 
 ## HW-24 k8s - 5
 
+
+helm upgrade --install grafana stable/grafana --set "adminPassword=admin" \
+--set "service.type=NodePort" \
+--set "ingress.enabled=true" \
+--set "ingress.hosts={reddit-grafana}"
+
 helm fetch --untar stable/prometheus
 helm upgrade prom . -f custom_values.yml --install
 
