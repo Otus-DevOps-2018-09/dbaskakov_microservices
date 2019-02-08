@@ -3,6 +3,14 @@ dbaskakov microservices repository
 
 ## HW-24 k8s - 5
 
+helm upgrade --install kibana stable/kibana \
+--set "ingress.enabled=true" \
+--set "ingress.hosts={reddit-kibana}" \
+--set "env.ELASTICSEARCH_URL=http://elasticsearch-logging:9200" \
+--version 0.1.1
+
+helm delete --purge kibana
+kubectl label node gke-cluster-default-pool-4833148b-w2jr elastichost=true
 
 helm upgrade --install grafana stable/grafana --set "adminPassword=admin" \
 --set "service.type=NodePort" \
