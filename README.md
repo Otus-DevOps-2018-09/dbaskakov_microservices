@@ -1,6 +1,30 @@
 # dbaskakov_microservices[![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2018-09/dbaskakov_microservices)
 dbaskakov microservices repository
 
+## HW-24 k8s - 5
+
+helm upgrade --install kibana stable/kibana \
+--set "ingress.enabled=true" \
+--set "ingress.hosts={reddit-kibana}" \
+--set "env.ELASTICSEARCH_URL=http://elasticsearch-logging:9200" \
+--version 0.1.1
+
+helm delete --purge kibana
+kubectl label node gke-cluster-default-pool-4833148b-w2jr elastichost=true
+
+helm upgrade --install grafana stable/grafana --set "adminPassword=admin" \
+--set "service.type=NodePort" \
+--set "ingress.enabled=true" \
+--set "ingress.hosts={reddit-grafana}"
+
+helm fetch --untar stable/prometheus
+helm upgrade prom . -f custom_values.yml --install
+
+## HW-24 k8s - 4
+
+helm init --service-account tiller
+ kubectl get pods -n kube-system --selector app=helm
+
 ## HW-23 k8s - 3
 
 gcloud beta container clusters update cluster --zone=europe-west1-c --update-addons=NetworkPolicy=ENABLED
